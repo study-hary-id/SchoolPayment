@@ -39,6 +39,9 @@ a.text-primary:focus, a.text-primary:hover {
 .text-secondary {
     color: var(--text-secondary-color) !important;
 }
+.letter-spacing-normal {
+    letter-spacing: normal !important;
+}
 .display-5 {
     font-size: calc(1.425rem + 2.1vw);
     font-weight: bolder;
