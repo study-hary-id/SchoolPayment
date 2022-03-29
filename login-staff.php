@@ -79,5 +79,60 @@ require_once 'header.php';
         </form>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        const validate = { email: false, password: false };
+
+         $("#email").keyup(function (e) {
+            const regex = /^[a-z1-9.]+@+[a-z]+[.]+[a-z]+$/;
+            if (!regex.test(e.target.value)) {
+                toggleError(
+                    $(this),
+                    "Must contain letters, numbers, dot, and @.",
+                    function () { validate.email = false }
+                );
+            } else {
+                togglePass($(this), "", function () { validate.email = true });
+            }
+        });
+
+        $('#password').keyup(function (e) {
+            // /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
+            // Regex pattern for registering a password.
+            // Must contain numbers, lowercase & uppercase letters.
+            if (e.target.value.length < 8) {
+                toggleError(
+                    $(this),
+                    "Password at least 8 long characters.",
+                    function () { validate.password = false }
+                );
+            } else {
+                togglePass($(this), "", function () { validate.password = true });
+            }
+        });
+
+        function togglePass(element, message, callback) {
+            callback();
+            element.removeClass("is-invalid");
+            element.next().text(message);
+            validateCredentials();
+        }
+
+        function toggleError(element, message, callback) {
+            callback();
+            element.addClass("is-invalid");
+            element.next().text(message);
+            validateCredentials();
+        }
+
+        function validateCredentials() {
+            if (validate.email && validate.password) {
+                $("#submit").removeAttr("disabled");
+            } else {
+                $("#submit").attr("disabled", "");
+            }
+        }
+    });
+</script>
 </body>
 </html>
