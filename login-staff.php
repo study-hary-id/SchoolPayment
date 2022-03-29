@@ -7,7 +7,6 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
     exit;
 }
 
-require_once 'config.php';
 require_once 'header.php';
 ?>
 <body>
@@ -31,7 +30,9 @@ require_once 'header.php';
                         name="email"
                         placeholder="Your email address"
                         class="form-control"
+                        id="email"
                     >
+                    <span class="invalid-feedback letter-spacing-normal"></span>
                 </div>
                 <div class="form-group">
                     <div class="d-flex align-items-center justify-content-between">
@@ -47,7 +48,9 @@ require_once 'header.php';
                         name="password"
                         placeholder="Enter your password"
                         class="form-control"
+                        id="password"
                     >
+                    <span class="invalid-feedback letter-spacing-normal"></span>
                 </div>
                 <div class="form-group form-check">
                     <input type="checkbox" name="keep-logged-in" class="form-check-input">
@@ -60,6 +63,8 @@ require_once 'header.php';
                         type="submit"
                         value="Sign in"
                         class="btn btn-primary form-control"
+                        id="submit"
+                        disabled
                     >
                 </div>
             </div>
