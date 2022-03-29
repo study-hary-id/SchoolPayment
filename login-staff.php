@@ -3,6 +3,7 @@
 session_start();
 
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+    // Target location to redirect if logged_in.
     header('location: info.php');
     exit;
 }
@@ -22,7 +23,7 @@ require_once 'header.php';
                     Please fill in your credentials to login.
                 </p>
             </div>
-            <div>
+            <div class="core-form">
                 <div class="form-group">
                     <label class="form-label" for="email">Email</label>
                     <input
@@ -83,6 +84,9 @@ require_once 'header.php';
     $(document).ready(function () {
         const validate = { email: false, password: false };
 
+        /*
+         * Validate email using RegExp every time it change.
+         */
          $("#email").keyup(function (e) {
             const regex = /^[a-z1-9.]+@+[a-z]+[.]+[a-z]+$/;
             if (!regex.test(e.target.value)) {
@@ -96,7 +100,10 @@ require_once 'header.php';
             }
         });
 
-        $('#password').keyup(function (e) {
+        /*
+         * Validate password by lenght every time it change.
+         */
+        $("#password").keyup(function (e) {
             // /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
             // Regex pattern for registering a password.
             // Must contain numbers, lowercase & uppercase letters.
@@ -111,6 +118,9 @@ require_once 'header.php';
             }
         });
 
+        /*
+         * Submit handler for sign in form using AJAX jQuery.
+         */
         function togglePass(element, message, callback) {
             callback();
             element.removeClass("is-invalid");
