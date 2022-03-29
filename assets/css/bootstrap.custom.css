@@ -113,15 +113,15 @@ a.text-warning:focus, a.text-warning:hover {
 }
 
 /* Button Component */
-.btn-primary {
+.btn-primary,
+.btn-primary.focus,
+.btn-primary:focus,
+.btn-primary.disabled,
+.btn-primary:disabled {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
 }
 .btn-primary:hover {
-    background-color: var(--primary-dark-color);
-    border-color: var(--primary-dark-color);
-}
-.btn-primary.focus, .btn-primary:focus {
     background-color: var(--primary-dark-color);
     border-color: var(--primary-dark-color);
 }
