@@ -72,7 +72,7 @@ require_once 'header.php';
             <div class="text-center my-3">
                 <p class="text-secondary">
                     Don't have an account?
-                    <a href="#" class="text-warning font-weight-bold">
+                    <a href="register-staff.php" class="text-warning font-weight-bold">
                         Sign up
                     </a>
                 </p>
@@ -121,6 +121,33 @@ require_once 'header.php';
         /*
          * Submit handler for sign in form using AJAX jQuery.
          */
+        $(".form-signin").submit(function (e) {
+           e.preventDefault();
+
+           if ($(this).find('.alert-danger').length > 0 )
+               $(this).find('.alert-danger').remove();
+
+           $.ajax({
+               url: "ajax.php?action=login",
+               method: "POST",
+               data: $(this).serialize(),
+               err: function (err) {
+                   console.log(err);
+               },
+               success: function (res) {
+                   if (res == 1) {
+                       location.href = "info.php";
+                       return;
+                   }
+                   $(".form-signin .core-form").before(
+                       '<div class="alert alert-danger text-center">' +
+                       '    Username or password is incorrect.' +
+                       '</div>'
+                   );
+               }
+           });
+        });
+
         function togglePass(element, message, callback) {
             callback();
             element.removeClass("is-invalid");
