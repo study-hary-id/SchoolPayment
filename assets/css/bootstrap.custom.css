@@ -60,6 +60,12 @@ a.text-warning:focus, a.text-warning:hover {
     padding: 1rem 0;
     margin: auto;
 }
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 1rem 0;
+    margin: auto;
+}
 .form-group {
     margin-bottom: 1.25rem;
 }
@@ -75,7 +81,7 @@ a.text-warning:focus, a.text-warning:hover {
     padding: .75rem 1.25rem;
     height: unset;
 }
-.form-control:focus {
+.form-control:focus, .form-check-input:focus {
     border-color: var(--primary-color);
     box-shadow: 0 1px 2px var(--primary-box-shadow),
         0 0 0 3px rgba(92,96,245,.25);
@@ -83,6 +89,24 @@ a.text-warning:focus, a.text-warning:hover {
 }
 .form-control[type="submit"] {
     font-weight: 600;
+}
+.form-check {
+    padding-left: 1.5rem;
+}
+.form-check-input {
+    background-color: #fff;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 1px solid rgba(0,0,0,.25);
+    margin-left: -1.5rem;
+    margin-top: .3125em;
+    vertical-align: top;
+    height: 1em;
+    width: 1em;
+}
+.form-check-input[type="checkbox"] {
+    border-radius: .25em;
 }
 
 /* Button Component */
