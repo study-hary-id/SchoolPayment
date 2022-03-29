@@ -1,6 +1,11 @@
 <?php
+
+require_once 'helper.php';
 $title = isset($_GET['page']) ?
-    ucwords(str_replace('-', ' ', $_GET['page']))
+    ucwords(str_replace(
+            '-',
+            ' ',
+            clean_input($_GET['page'])))
     : 'Home';
 ?>
 <!DOCTYPE html>
@@ -27,9 +32,14 @@ $title = isset($_GET['page']) ?
     >
     <link rel="stylesheet" href="assets/css/bootstrap.custom.css">
 
+<!--    <script-->
+<!--        src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"-->
+<!--        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"-->
+<!--        crossorigin="anonymous"-->
+<!--    ></script>-->
     <script
-        src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
         crossorigin="anonymous"
     ></script>
     <script
